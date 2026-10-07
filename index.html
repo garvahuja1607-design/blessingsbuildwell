@@ -1,238 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <!-- Desktop / Responsive Viewport Settings -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blessings Buildwell | Crafting Luxury, Building Dreams</title>
-  
-  <style>
-    :root {
-      --gold: #D4AF37;
-      --gold-light: #F3E5AB;
-      --gold-dark: #AA820A;
-      --navy-bg: #070D18;
-      --navy-card: #0F1B2E;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blessings Buildwell | Creating Luxury. Building Dreams.</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:#061528;color:#f8f8f5;font-family:Arial,sans-serif;line-height:1.7;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+/* Navigation & Logo */
+nav{position:fixed;top:0;left:0;right:0;height:80px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;z-index:100;background:rgba(6,21,40,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(215,173,90,.2)}
+.logo-wrap{display:flex;align-items:center;gap:12px}
+.logo{width:55px;height:55px;border-radius:50%;border:1.5px solid #d7ad5a;object-fit:cover;box-shadow:0 0 10px rgba(215,173,90,.3);transition:transform .4s ease}
+.logo:hover{transform:scale(1.08) rotate(3deg)}
+.links{display:flex;gap:32px;font-size:11px;letter-spacing:2px;text-transform:uppercase}.links a{transition:color .3s ease}.links a:hover{color:#f0d49a}
 
-    body {
-      background-color: var(--navy-bg);
-      color: #FFFFFF;
-      font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      overflow-x: hidden;
-    }
+/* Hero Section */
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;padding:120px 20px 80px;position:relative;background:radial-gradient(circle at 50% 35%,rgba(215,173,90,.15),transparent 45%),#061528}
+.hero:before{content:"";position:absolute;width:min(70vw,800px);height:min(70vw,800px);border:1px solid rgba(215,173,90,.25);border-radius:50%;animation:pulseRing 6s ease-in-out infinite alternate}
+.hero-main-logo{width:160px;height:160px;border-radius:50%;border:2px solid #d7ad5a;object-fit:cover;box-shadow:0 0 25px rgba(215,173,90,.4);margin-bottom:20px;animation:floatLogo 4s ease-in-out infinite alternate}
+.content{position:relative;max-width:900px;animation:fadeUp 1.2s cubic-bezier(.16,1,.3,1) forwards}
+.eyebrow{color:#f0d49a;font-size:10px;letter-spacing:4px;font-weight:bold;text-transform:uppercase}
+h1,h2,h3{font-family:Georgia,serif;font-weight:normal}
+h1{font-size:clamp(45px,7vw,90px);line-height:.98;margin:15px 0}em{color:#f0d49a;font-style:normal}
+.hero p{max-width:600px;margin:0 auto 30px;color:#c5ced8}
+.btn{display:inline-block;padding:14px 28px;margin:6px;font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:all .35s ease;cursor:pointer}
+.gold{background:#d7ad5a;color:#061528;font-weight:bold}.gold:hover{background:#f0d49a;box-shadow:0 0 20px rgba(215,173,90,.5);transform:translateY(-2px)}
+.outline{border:1px solid #d7ad5a;color:#f0d49a}.outline:hover{background:rgba(215,173,90,.15);transform:translateY(-2px)}
 
-    /* Top Navigation Header */
-    header {
-      width: 100%;
-      padding: 25px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
-      background: rgba(15, 27, 46, 0.6);
-      backdrop-filter: blur(10px);
-    }
+/* Architectural Building Animation Section */
+.skyline-container{display:flex;justify-content:center;align-items:flex-end;gap:12px;height:220px;max-width:550px;margin:40px auto 10px;border-bottom:2px solid #d7ad5a;padding-bottom:1px}
+.building-tower{background:linear-gradient(180deg,rgba(215,173,90,.9) 0%,rgba(6,21,40,.9) 100%);border:1px solid #d7ad5a;border-bottom:none;border-top-left-radius:3px;border-top-right-radius:3px;position:relative;transform-origin:bottom;animation:riseBuilding 1.8s cubic-bezier(.16,1,.3,1) forwards;opacity:0}
+.building-tower::before{content:"";position:absolute;top:12px;left:20%;right:20%;bottom:8px;background-image:radial-gradient(#f0d49a 25%,transparent 25%);background-size:8px 14px;opacity:.7}
+.bt1{width:40px;height:120px;animation-delay:.1s}
+.bt2{width:50px;height:175px;animation-delay:.4s}
+.bt3{width:60px;height:210px;animation-delay:.7s} /* Center Spire */
+.bt4{width:50px;height:155px;animation-delay:.3s}
+.bt5{width:40px;height:100px;animation-delay:.2s}
+.bt3::after{content:"";position:absolute;top:-22px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:22px solid #d7ad5a}
 
-    .brand-logo-wrap {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+/* Sections */
+section{padding:100px 8%}.about{background:#f4efe5;color:#162033}.about .eyebrow{color:#92703a}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:45px}.copy{color:#586576;max-width:600px}
+h2{font-size:clamp(40px,5vw,70px);line-height:1}.statement{text-align:center;background:#08192c}.statement p{max-width:650px;margin:25px auto;color:#aeb7c2}
 
-    .brand-logo-wrap svg {
-      width: 60px;
-      height: 60px;
-      filter: drop-shadow(0px 0px 8px rgba(212, 175, 55, 0.5));
-    }
+/* Projects Cards */
+.projects h2{margin-top:12px}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:50px}
+.card{height:420px;padding:30px;display:flex;align-items:flex-end;position:relative;overflow:hidden;background-size:cover;background-position:center;border-radius:6px;border:1px solid rgba(215,173,90,.2);transition:transform .4s ease,border-color .4s ease,box-shadow .4s ease}
+.card:hover{transform:translateY(-8px);border-color:#d7ad5a;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+.card-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(6,21,40,0.95) 15%,rgba(6,21,40,0.4) 100%);z-index:1;transition:opacity .4s ease}
+.card-content{position:relative;z-index:2}.card span{color:#f0d49a;font-size:9px;letter-spacing:3px;text-transform:uppercase}
+.card h3{font-size:32px;margin:7px 0}.card p{font-size:12px;color:#b8c1ca;line-height:1.6}
 
-    .brand-title-text {
-      color: var(--gold);
-      font-size: 1.4rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 700;
-    }
+/* Core Values */
+.values{background:#08192c}.values .grid{grid-template-columns:repeat(3,1fr);gap:45px}
+.value{border-top:1px solid rgba(215,173,90,.4);padding-top:22px;transition:transform .3s ease}
+.value:hover{transform:translateY(-4px)}.value h3{font-size:30px;margin:10px 0;color:#f0d49a}.value p{color:#aeb7c2;font-size:13px}
 
-    /* Main Hero Banner Section */
-    .hero-container {
-      text-align: center;
-      margin-top: 40px;
-      padding: 0 20px;
-    }
+/* Contact & Footer */
+.contact{text-align:center;background:#f4efe5;color:#162033}.contact .eyebrow{color:#92703a}.contact p{color:#687383;max-width:500px;margin:10px auto}
+.contact-detail{font-size:16px;font-weight:bold;color:#162033;margin:20px 0}
+footer{padding:40px 8%;display:flex;justify-content:space-between;align-items:center;color:#9ca8b4;font-size:11px;border-top:1px solid rgba(215,173,90,.2)}
+footer .footer-logo{width:50px;height:50px;border-radius:50%;border:1px solid #d7ad5a;object-fit:cover}
 
-    .main-logo-hero {
-      width: 180px;
-      height: 180px;
-      margin: 0 auto 20px;
-      animation: logoGlow 3s ease-in-out infinite alternate;
-    }
+/* Keyframe Animations */
+@keyframes fadeUp{0%{opacity:0;transform:translateY(30px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes floatLogo{0%{transform:translateY(0)}100%{transform:translateY(-10px)}}
+@keyframes pulseRing{0%{transform:scale(.98);opacity:.3}100%{transform:scale(1.02);opacity:.6}}
+@keyframes riseBuilding{0%{transform:scaleY(0);opacity:0}100%{transform:scaleY(1);opacity:1}}
 
-    .hero-title {
-      font-size: 2.8rem;
-      color: var(--gold);
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
-    }
-
-    .hero-subtitle {
-      color: var(--gold-light);
-      font-size: 1.1rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-weight: 300;
-      opacity: 0.9;
-    }
-
-    /* Architectural Building Animation Section */
-    .building-skyline {
-      display: flex;
-      justify-content: center;
-      align-items: flex-end;
-      gap: 14px;
-      height: 280px;
-      margin: 40px auto 0;
-      padding-bottom: 1px;
-      border-bottom: 2px solid var(--gold);
-      position: relative;
-    }
-
-    .building {
-      background: linear-gradient(180deg, rgba(212, 175, 55, 0.85) 0%, rgba(15, 27, 46, 0.95) 100%);
-      border: 1px solid var(--gold);
-      border-bottom: none;
-      border-top-left-radius: 3px;
-      border-top-right-radius: 3px;
-      position: relative;
-      transform-origin: bottom;
-      animation: riseBuilding 1.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-      opacity: 0;
-      box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
-    }
-
-    /* Window Grids with Animated Lighting */
-    .building::before {
-      content: '';
-      position: absolute;
-      top: 15px;
-      left: 15%;
-      right: 15%;
-      bottom: 10px;
-      background-image: radial-gradient(var(--gold-light) 25%, transparent 25%);
-      background-size: 10px 16px;
-      opacity: 0.8;
-    }
-
-    /* Staggered Heights and Animation Delays */
-    .b1 { width: 45px; height: 130px; animation-delay: 0.1s; }
-    .b2 { width: 55px; height: 190px; animation-delay: 0.4s; }
-    .b3 { width: 65px; height: 250px; animation-delay: 0.7s; } /* Center Spire Tower */
-    .b4 { width: 55px; height: 170px; animation-delay: 0.3s; }
-    .b5 { width: 45px; height: 110px; animation-delay: 0.2s; }
-
-    /* Center Tower Spire Peak */
-    .b3::after {
-      content: '';
-      position: absolute;
-      top: -28px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: 8px solid transparent;
-      border-right: 8px solid transparent;
-      border-bottom: 28px solid var(--gold);
-    }
-
-    /* Keyframe Animations */
-    @keyframes riseBuilding {
-      0% {
-        transform: scaleY(0);
-        opacity: 0;
-      }
-      100% {
-        transform: scaleY(1);
-        opacity: 1;
-      }
-    }
-
-    @keyframes logoGlow {
-      from {
-        filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
-      }
-      to {
-        filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.8));
-      }
-    }
-
-    /* Footer */
-    footer {
-      width: 100%;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.85rem;
-      color: rgba(243, 229, 171, 0.6);
-      border-top: 1px solid rgba(212, 175, 55, 0.15);
-    }
-  </style>
+@media(max-width:768px){.links{display:none}.grid,.cards,.values .grid{grid-template-columns:1fr;gap:30px}.cards .card{height:360px}section{padding:75px 6%}footer{flex-direction:column;gap:15px;text-align:center}}
+</style>
 </head>
 <body>
 
-  <!-- Top Header Navigation -->
-  <header>
-    <div class="brand-logo-wrap">
-      <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="100" cy="100" r="95" stroke="#D4AF37" stroke-width="3"/>
-        <path d="M100 35 L125 75 L115 75 L115 90 L85 90 L85 75 L75 75 Z" fill="#D4AF37"/>
-        <path d="M70 120 C70 100 85 100 95 100 L95 140 C80 140 70 135 70 120 Z" fill="#D4AF37"/>
-        <path d="M105 100 C115 100 130 100 130 120 C130 135 115 140 105 140 Z" fill="#D4AF37"/>
-      </svg>
-      <span class="brand-title-text">Blessings Buildwell</span>
+<nav>
+  <a href="#home" class="logo-wrap">
+    <!-- Logo fallback checks for logo.jpg or logo.png in repository root -->
+    <img class="logo" src="logo.jpg" alt="Blessings Buildwell" onerror="this.src='logo.png'">
+  </a>
+  <div class="links">
+    <a href="#home">Home</a>
+    <a href="#about">About Us</a>
+    <a href="#projects">Projects</a>
+    <a href="#values">Values</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="content">
+    <img class="hero-main-logo" src="logo.jpg" alt="Blessings Buildwell Logo" onerror="this.src='logo.png'">
+    <span class="eyebrow">Blessings Buildwell</span>
+    <h1>Creating Luxury. <em>Building Dreams.</em></h1>
+    <p>Delivering high-end residential and commercial architecture with uncompromising craftsmanship and elegant aesthetics.</p>
+    <a href="#projects" class="btn gold">View Projects</a>
+    <a href="#contact" class="btn outline">Get In Touch</a>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <span class="eyebrow">Who We Are</span>
+  <h2>Excellence In Construction</h2>
+  <div class="grid">
+    <div class="copy">
+      <p>At Blessings Buildwell, we blend modern architectural design with timeless structural integrity. Our dedicated team delivers luxury properties tailored to perfection.</p>
     </div>
-  </header>
-
-  <!-- Hero Content -->
-  <section class="hero-container">
-    <!-- Centered Logo graphic -->
-    <svg class="main-logo-hero" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="100" cy="100" r="94" stroke="#D4AF37" stroke-width="3"/>
-      <circle cx="100" cy="100" r="88" stroke="#D4AF37" stroke-width="1" stroke-dasharray="4 2"/>
-      <!-- Buildings Top Motif -->
-      <path d="M100 30 L118 60 L110 60 L110 75 L90 75 L90 60 L82 60 Z" fill="#D4AF37"/>
-      <!-- BB Monogram -->
-      <text x="50%" y="130" font-family="'Playfair Display', serif" font-size="52" font-weight="bold" fill="#D4AF37" text-anchor="middle">BB</text>
-    </svg>
-
-    <h1 class="hero-title">Blessings Buildwell</h1>
-    <p class="hero-subtitle">Crafting Luxury, Building Dreams</p>
-
-    <!-- Animated Luxury Building Elevation -->
-    <div class="building-skyline">
-      <div class="building b1"></div>
-      <div class="building b2"></div>
-      <div class="building b3"></div>
-      <div class="building b4"></div>
-      <div class="building b5"></div>
+    <div class="copy">
+      <p>From residential estates to modern commercial spaces, every detail is engineered to match the highest standards of safety and sophistication.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2026 Blessings Buildwell. All Rights Reserved.
-  </footer>
+<section class="statement">
+  <h2>Building Legacy With Trust</h2>
+  <p>Our commitment to quality ensures that every project stands as a testament to durability, aesthetics, and client satisfaction.</p>
+</section>
+
+<section class="projects" id="projects">
+  <span class="eyebrow">Our Portfolio</span>
+  <h2>Featured Projects</h2>
+
+  <!-- Animated Building Skyline Elevation -->
+  <div class="skyline-container">
+    <div class="building-tower bt1"></div>
+    <div class="building-tower bt4"></div>
+    <div class="building-tower bt3"></div>
+    <div class="building-tower bt2"></div>
+    <div class="building-tower bt5"></div>
+  </div>
+
+  <div class="cards">
+    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80');">
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <span>Completed Project</span>
+        <h3>The Imperial Residency</h3>
+        <p>A fully finished state-of-the-art luxury residential project crafted with premium gold-accented materials.</p>
+      </div>
+    </div>
+
+    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80');">
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <span>Ongoing Project</span>
+        <h3>Skyline Apartments</h3>
+        <p>Modern multi-story apartments featuring contemporary layouts and smart home integration.</p>
+      </div>
+    </div>
+
+    <div class="card" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80');">
+      <div class="card-overlay"></div>
+      <div class="card-content">
+        <span>Upcoming Project</span>
+        <h3>Grand Commercial Plaza</h3>
+        <p>An upcoming commercial hub designed to host high-end retail brands and corporate suites.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="values" id="values">
+  <span class="eyebrow">Core Principles</span>
+  <h2>Our Values</h2>
+  <div class="grid">
+    <div class="value">
+      <h3>Quality</h3>
+      <p>Premium sourcing of materials and superior execution in every build phase.</p>
+    </div>
+    <div class="value">
+      <h3>Innovation</h3>
+      <p>Integrating modern building techniques with sustainable architectural design.</p>
+    </div>
+    <div class="value">
+      <h3>Integrity</h3>
+      <p>Transparent communication, strict timelines, and long-term client relationships.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <span class="eyebrow">Get In Touch</span>
+  <h2>Contact Us</h2>
+  <p>Have a dream project in mind? Reach out to us today to start building your vision.</p>
+  <div class="contact-detail">
+    <p><strong>Contact Person:</strong> Harsh Ahuja</p>
+    <p><strong>Phone:</strong> <a href="tel:9350488718" style="color: #92703a; text-decoration: underline;">+91 9350488718</a></p>
+  </div>
+  <a href="tel:9350488718" class="btn gold">Call Now</a>
+</section>
+
+<footer>
+  <img class="footer-logo" src="logo.jpg" alt="Blessings Buildwell Logo" onerror="this.src='logo.png'">
+  <p>&copy; 2026 Blessings Buildwell. All Rights Reserved.</p>
+</footer>
 
 </body>
 </html>
